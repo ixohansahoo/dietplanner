@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BMR Calculator</title>
+    <style>
+        body {
+
+            margin: 0%;
+        }
+
+        h1 {
+
+            padding-top: 15px;
+            padding-bottom: 0px;
+            margin: 0%;
+        }
+
+        h3 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 0%;
+        }
+
+        .top-bmi-div {
+            background-color: rgb(134, 255, 159);
+            margin: auto;
+            text-align: center;
+            height: 500px;
+            justify-content: center;
+            padding-top: 5px;
+
+        }
+
+        .top-img-bmi {
+            /* The image used */
+            width: 100%;
+            height: 30em;
+            background-image: url("bodyfat6.jpg");
+
+            min-height: 380px;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            /* Needed to position the navbar */
+            position: relative;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        input[type="number"],
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            margin-top: 5px;
+            text-align: center;
+
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            margin-top: 5px;
+            padding-top: 5px;
+            text-align: center;
+
+        }
+
+        input[type="submit"] {
+            background-color: rgb(3, 124, 58);
+            color: #fff;
+            width: 100%;
+
+            cursor: pointer;
+            margin-top: 15px;
+            margin-bottom: 0%;
+            height: 30px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+        }
+
+        #result {
+            text-align: center;
+            font-weight: bold;
+            padding-top: 10px;
+        }
+
+        .form-div {
+            display: flex;
+
+            width: 30%;
+            height: 75%;
+            justify-content: center;
+            margin: auto;
+            background-color: rgb(97, 255, 129);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        #result {
+            display: flex;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .abt-bmi {
+            max-width: 90ch;
+            font-size: 19px;
+            text-align: center;
+            display: inline-block;
+            color: rgb(0, 100, 8);
+            justify-content: center;
+            display: flex;
+            margin: auto;
+            padding-top: 250px;
+
+            text-shadow: 0 0 1px #a1a1a1, 0 1px #64d359;
+        }
+
+        #op3 {
+            color: rgb(0, 0, 0);
+            padding: 15%;
+        }
+
+        #gender {
+            display: block;
+            width: 105%;
+            margin-bottom: 1%;
+
+            height: 6%;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="top-img-bmi">
+        <div class="top-container">
+            <div class="topnav">
+                <a href="#home">Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="top-bmi-div">
+
+        <h1>WELCOME</h1>
+        <h3>let's check your Body fat</h3>
+
+        <div class="form-div">
+            <form onsubmit="calculateBMI(); return false;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" step="0.1" required>
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" step="0.1" required>
+                <label for="height">Height (m):</label>
+                <input type="number" id="height" step="0.01" required>
+                <label for="age">Age (years): </label>
+                <input type="number" id="age" required>
+                <label for="gender" id="op3">Gender: </label>
+                <select id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+
+                <input type="submit" value="Calculate FAT">
+                <div id="result">
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value);
+            var name = document.getElementById("name").value;
+            var gender = document.getElementById("gender").value;
+            var age = document.getElementById("age").value;
+            var BMI = weight / (height * height);
+            console.log(BMI)
+            var bodyFatPercentage = 0;
+            if (gender === 'male') {
+                bodyFatPercentage = (1.20 * BMI) + (0.23 * age) - 16.2
+            } else if (gender === 'female') {
+                bodyFatPercentage = (1.20 * BMI) + (0.23 * age) - 5.4
+
+            }
+            console.log(bodyFatPercentage)
+
+            document.getElementById("result").innerText = "Hello " + name + "\n Your body fat is: " + bodyFatPercentage.toFixed(2) + "%";
+        }
+    </script>
+</body>
+
+</html>

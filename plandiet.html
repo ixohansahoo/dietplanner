@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Diet plan</title>
+    <style>
+        body {
+
+            margin: 0%;
+        }
+
+        h1 {
+
+            padding-top: 15px;
+            padding-bottom: 0px;
+            margin: 0%;
+        }
+
+        h3 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 0%;
+        }
+
+        .top-bmi-div {
+            background-color: rgb(134, 255, 159);
+            margin: 0%;
+            text-align: center;
+            height: 110%;
+            justify-content: center;
+            padding-top: 5px;
+
+        }
+
+        .top-img-bmi {
+            /* The image used */
+            width: 100%;
+            height: 30em;
+            background-image: url("foodplan.jpg");
+
+            min-height: 380px;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            /* Needed to position the navbar */
+            position: relative;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        input[type="number"],
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            margin-top: 5px;
+            text-align: center;
+
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            margin-top: 5px;
+            padding-top: 5px;
+            text-align: center;
+
+        }
+
+        input[type="submit"] {
+            background-color: rgb(3, 124, 58);
+            color: #fff;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 0%;
+            height: 30px;
+            border-radius: 25px;
+            margin-top: 15%;
+            border: none;
+            outline: none;
+        }
+
+        #result {
+            text-align: center;
+            font-weight: bold;
+            padding-top: 10px;
+        }
+
+        .form-div {
+            display: flex;
+
+            width: 30%;
+            height: 53%;
+            justify-content: center;
+            margin: auto;
+            background-color: rgb(97, 255, 129);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        #result {
+            display: flex;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .abt-bmi {
+            max-width: 90ch;
+            font-size: 19px;
+            text-align: center;
+            display: inline-block;
+            color: rgb(0, 100, 8);
+            justify-content: center;
+            display: flex;
+            margin: auto;
+            padding-top: 250px;
+
+            text-shadow: 0 0 1px #a1a1a1, 0 1px #64d359;
+        }
+
+        #op3 {
+            color: rgb(0, 0, 0);
+            pad: 10%;
+        }
+
+        #gender {
+            display: block;
+            width: 105%;
+            margin-bottom: 1%;
+
+            height: 4%;
+            text-align: center;
+        }
+
+        #type-of-diet {
+            display: block;
+            width: 105%;
+            margin-bottom: 1%;
+
+            height: 4%;
+            text-align: center;
+        }
+
+        #goal {
+            display: block;
+            width: 105%;
+            margin-bottom: 5%;
+
+            height: 4%;
+            text-align: center;
+        }
+        #dn_id{
+            margin: 0%;
+            padding: 0%;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="fetch.js"></script>
+</head>
+
+<body>
+    <div class="top-img-bmi">
+        <div class="top-container">
+            <div class="topnav">
+                <a href="#home">Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="top-bmi-div">
+
+        <h1>WELCOME</h1>
+        <h3>let's plan your diet</h3>
+
+        <div class="form-div">
+            <form onsubmit="mainf(); return false;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" step="0.1" required>
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" step="0.1" required>
+                <label for="height">Height (m):</label>
+                <input type="number" id="height" step="0.01" required>
+                <label for="age">Age (years): </label>
+                <input type="number" id="age" required>
+                <label for="gender" id="op3">Gender: </label>
+                <select id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <br>
+                <label for="type-of-diet" id="op3">Type of diet: </label>
+                <select id="type-of-diet" required>
+                    <option value="everymeal">Everything</option>
+                    <option value="veg">Vegetarian</option>
+                    <option value="vegan">vegan</option>
+                    <option value="keto">keto</option>
+                    <option value="dairyfree">Dairy free</option>
+                    <option value="nutfree">Nutfree</option>
+                </select>
+                <br>
+                <label for="goal" id="op3">Goal: </label>
+                <select id="goal" required>
+                    <option value="loose-weight">Loose-Weight</option>
+                    <option value="gain-weight">Gain-weight</option>
+                    <option value="maintain-weight">Maintain-weight</option>
+
+                </select>
+                <input id="planbtn" type="submit" value="Plan your meal">
+                <div id="result">
+
+                </div>
+            </form>
+
+        </div>
+        <br>
+        <br>
+
+
+        <p id="bf_id"></p>
+        <p id="ln_id"></p>
+        <p id="dn_id"></p>
+
+    </div>
+
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>
