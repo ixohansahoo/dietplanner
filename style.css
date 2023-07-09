@@ -82,10 +82,15 @@ h1{
   .row {
       margin: 0px;
       background-color: rgb(223, 255, 230);
-      height: 400px;
-      display: flex;
+      height: 10%;
+      display:inline-block;
       justify-content: center;
-      padding-top: 80px;
+      padding-top: 8%;
+      padding-bottom: 8%;
+      width: 90%;
+     margin: auto;
+     text-align: center;
+     padding-left: 10%;
     }
   
   /* Clear floats after the columns */
@@ -99,14 +104,15 @@ h1{
   /* Style the counter cards */
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
     text-align: center;
     background-color: #f1f1f1;
-    height: 300px;
-    margin: 20px;
-    width: 300px;
+    height: 170%;
+    margin: 0rem;
+    width: 90%;
     background-color: rgb(191, 253, 203);
     color: rgb(3, 124, 58);
+    margin: auto;
+    
 }
 
   /* Responsive columns - one column layout (vertical) on small screens */
